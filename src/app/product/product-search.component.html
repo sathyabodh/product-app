@@ -1,0 +1,12 @@
+<h2>Search </h2>
+<form [formGroup] = "group">
+    <input name="search" formControlName="searchBox" />
+</form>
+
+<div [ngClass]="['flex',' two']">
+    <div *ngFor = " let product of products">
+        <product-widget [product]="product">
+            
+        </product-widget>
+    </div>
+</div>

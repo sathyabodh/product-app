@@ -1,0 +1,13 @@
+        <article [ngClass]="'card'">
+            <header>{{product.name}}</header>
+            <p>
+                {{product.weight}}
+            </p>
+            <p>
+                {{product.year}}
+            </p>
+           <footer>
+               <a class="button" routerLink="/products/edit/{{product.id}}">Edit</a>
+               <button (click) = "toCart()">+Cart</button>
+           </footer>
+        </article>

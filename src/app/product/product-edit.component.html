@@ -1,0 +1,90 @@
+<!--
+<h1>Product  Edit {{product.name}}</h1>
+
+<form (ngSubmit)="saveProduct()">
+    Name: <input name="Name" [(ngModel)] = "product.name"/>
+
+    Year: <input name="year" [(ngModel)] = "product.year"/>
+    Weight: <input name="weight" [(ngModel)] = "product.weight"/>
+
+    Brand {{brands.length}}
+    <select name="brandId" [(ngModel)] = "product.brandId">
+        <option *ngFor = "let brand of brands"
+            value = "{{brand.id}}">
+            {{brand.name}}
+        </option>
+    </select>
+
+    <button type="submit">Save</button>
+</form>
+-->
+<h1>Product Edit - {{product.name}} </h1>
+
+<form  (ngSubmit)="saveProduct()" #productForm="ngForm" >
+    Name 
+    <input 
+            name="name" 
+            [(ngModel)]="product.name"
+            
+             required
+             minlength="3"
+             pattern="[0-9a-zA-Z\s\w]*"
+
+             #productName="ngModel"
+            
+             />
+
+     <label *ngIf="!productName.valid">
+        Invalid name
+     </label>
+
+     <label *ngIf="productName.errors?.minlength">
+             Invalid length
+     </label>
+
+    <label *ngIf="productName.errors?.pattern">
+             Invalid Pattern
+     </label>
+     
+
+     <label *ngIf="productName.dirty">
+             Name changed
+     </label>
+
+
+     <label *ngIf="productForm.dirty">
+             Form changed
+     </label>
+
+
+     <br />
+
+     Year 
+    <input 
+            name="year" 
+            [(ngModel)]="product.year" />
+
+    
+     Weight 
+    <input 
+            name="weight" 
+            [(ngModel)]="product.weight" />
+
+    Brand  {{brands.length}}
+
+    <select name="brandId"
+            [(ngModel)]="product.brandId">
+
+            <option *ngFor="let brand of brands"
+                    value="{{brand.id}}" >
+
+                    {{brand.name}}
+
+            </option>
+
+    </select>
+
+    <button type="submit"  
+         [disabled]="!productForm.valid" 
+         >Save</button>
+</form>

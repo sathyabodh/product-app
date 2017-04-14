@@ -1,0 +1,14 @@
+<h1>Product List</h1>
+
+<input [(ngModel)] = "year">
+
+<span>Entered year is {{year}} </span>
+
+<div [ngClass]="['flex',' two']">
+    <div *ngFor = " let product of products">
+        <product-widget [product]="product"
+            (addToCartEvent) = "addToShoppingCart($event)">
+
+        </product-widget>
+    </div>
+</div>

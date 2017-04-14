@@ -1,0 +1,19 @@
+<h1>{{title}}</h1>
+
+<h4>Address {{address?.street}}</h4>
+<h2> {{likes}} Likes </h2>
+<button on-click="like()">
+Like
+</button>
+<button (click)="toggleMembers()">
+    show/hide
+</button>
+<input name="name" #memberName />
+<button (click) = "addMembers(memberName.value)">Add</button>
+<div *ngIf = "showMembers">
+<h2 >Members</h2>
+<ul>
+    <li *ngFor="let name of members; let i=index"> {{i}}-{{name}}</li>
+
+</ul>
+</div>
